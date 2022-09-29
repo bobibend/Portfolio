@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2022 by bobibend (http://jsbin.com/viqigez/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html lang=en>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap" rel="stylesheet">
+  <title> Color clock
+  </title>
+<style id="jsbin-css">
+* { 
+  margin: 0; 
+  padding: 0; 
+}
+
+#clock {
+  text-align: center;
+}
+
+  html, body {
+  height: 100%;
+}
+
+
+#clock {
+  position: relative;
+  top: 50%;
+  color: white;
+  font-family: 'Dosis', sans-serif;
+  font-size: 5rem;
+  margin-top: -4rem;
+  
+}
+
+</style>
+</head>
+<body>
+  <div id="clock">12:13:14</div>
+<script id="jsbin-javascript">
+
+function colorClock(){
+var date = new Date();
+var hours = date.getHours();
+var minutes = date.getMinutes();
+var seconds = date.getSeconds();
+
+if (seconds < 10) {
+  seconds = '0' + seconds;}
+
+if (minutes < 10) {
+  minutes = '0' + minutes;}
+
+if (hours < 10) {
+  hours = '0' + hours;
+}
+
+
+
+var clockFace = hours + 'óra ' + minutes + 'perc '+ seconds;
+document.getElementById('clock').innerHTML= clockFace;
+
+
+var hexColor = "#" + minutes + hours + seconds;
+
+if (seconds <= 20) {
+  hexColor = '#' + 'a' + seconds + 'f' + minutes;
+}
+if (seconds >20 && seconds < 40) {
+  hexColor = '#' + 'd' + seconds + 'e' + minutes;
+}
+if (seconds > 40 && seconds < 60) {
+  hexColor = '#' + 'b' + seconds + 'c' + minutes;
+}
+  
+document.body.style.background=hexColor;
+
+  setTimeout(function(){
+  colorClock();
+  }, 1000);
+
+}
+colorClock();
+
+
+
+</script>
+</body>
+  
+  
+</html>
